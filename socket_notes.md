@@ -44,7 +44,7 @@ There are to widely used socket types and each one has their own communication p
 
 `refereance page: https://en.wikipedia.org/wiki/POSIX`
 
-The Portable Operating System Interface (POSIX) is a family of standards specified by the IEEE Computer Society for maintaining compatibility between operating systems.[1] POSIX defines the application programming interface (API), along with command line shells and utility interfaces, for software compatibility with variants of Unix and other operating systems.
+The Portable Operating System Interface (POSIX) is a family of standards specified by the IEEE Computer Society for maintaining compatibility between operating systems. POSIX defines the application programming interface (API), along with command line shells and utility interfaces, for software compatibility with variants of Unix and other operating systems.
 
 
 #### What are File Descriptors ?
@@ -55,7 +55,7 @@ In unix `everyting is a file` and every `file` needs to `file descriptors` to ac
 
 ##### Every process has their own file descriptor and this refers to the their own `file descriptor table`. This a small table that just maps some of the numbers into the kernel.
 
-##### `strace` command to see system calls od an app. strace ./read.py
+##### `strace` command to see system calls of an app. strace ./read.py
 
 
 
