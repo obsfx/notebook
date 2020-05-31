@@ -10,21 +10,21 @@ Server and Client each establish their own *socket*.
 
 Steps of establishing a socket on *client side*:
 
-    1. Create a socket with the `socket()` system call.
+1. Create a socket with the `socket()` system call.
 
-    2. Connect the socket to the address of the server using the `connect()` system call.
+2. Connect the socket to the address of the server using the `connect()` system call.
 
-    3. Send and receive data. Simplest way is using `read()` and `write()` system calls.
+3. Send and receive data. Simplest way is using `read()` and `write()` system calls.
 
 Steps of establishing a socket on the *server side*:
 
-    1. Create a socket with the `socket()` system call.
+1. Create a socket with the `socket()` system call.
 
-    2. Bind the socket to an adress using `bind()` system call. For a server socket on the internet, an adress consist of a port number on the host machine.
+2. Bind the socket to an adress using `bind()` system call. For a server socket on the internet, an adress consist of a port number on the host machine.
 
-    3. Listen for connections with the `listen()` system call.
+3. Listen for connections with the `listen()` system call.
 
-    4. Accept a connection with the accept system all. This call typically blocks until a client connect with the server.
+4. Accept a connection with the accept system all. This call typically blocks until a client connect with the server.
 
 ### Socket Types
 
@@ -32,9 +32,9 @@ When a socket is created the program has to specify the *address domain* and the
 
 Two widely used address domains:
 
-    1. `unix domain`: two processes share a common file system communicate.
+1. `unix domain`: two processes share a common file system communicate.
 
-    2. `internet domain`: two processes running on any two hosts on the internet communicate.
+2. `internet domain`: two processes running on any two hosts on the internet communicate.
 
 Each one has its own address format.
 
@@ -48,9 +48,9 @@ Each socket needs a port number on that host. Port numbers are `16-bit unsigned 
 
 There are to widely used socket types and each one has their own communication protocol:
 
-    1. `stream sockets`: treat communications as a continuous stream of characters. Use `TCP(Transmission Control Protocol)` which is reliable and stream oriented protocol.
+1. `stream sockets`: treat communications as a continuous stream of characters. Use `TCP(Transmission Control Protocol)` which is reliable and stream oriented protocol.
 
-    2. `datagram sockets`: have to read entire messages at once. Use `UDP(Unix Datagram Protocol)` which is unreliable and message oriented.
+2. `datagram sockets`: have to read entire messages at once. Use `UDP(Unix Datagram Protocol)` which is unreliable and message oriented.
 
 #### What is POSIX ?
 
@@ -78,13 +78,13 @@ The socket system call returns an entry into the file descriptor table (i.e. a s
 
 To allow the server to handle multiple simultaneous connections, we make the following changes the code:
 
-    1. Put the `accept` statement and the following code in an infinite loop.
+1. Put the `accept` statement and the following code in an infinite loop.
 
-    2. After a connection established, call `fork()` to create a new process.
+2. After a connection established, call `fork()` to create a new process.
 
-    3. The child process will close `sockfd` and call `dostuff() (a psuedo function that contains all stuff)`, passing the new socket file descriptor as an argument. When the two processes have completed their conversation, as indicated by `dostuff()` returning, this process simply exits.
+3. The child process will close `sockfd` and call `dostuff() (a psuedo function that contains all stuff)`, passing the new socket file descriptor as an argument. When the two processes have completed their conversation, as indicated by `dostuff()` returning, this process simply exits.
 
-    4. The parent process closes `newsockfd`. Because all of this code is in an infinite loop, it will return to the accept statement to wait for the next connection.
+4. The parent process closes `newsockfd`. Because all of this code is in an infinite loop, it will return to the accept statement to wait for the next connection.
 
 
 
