@@ -58,10 +58,17 @@ In unix `everyting is a file` and every `file` needs to `file descriptors` to ac
 ##### `strace` command to see system calls of an app. strace ./read.py
 
 
+`sockfd = socket(AF_INET, SOCK_STREAM, 0)`
+If the third argument is zero (and it always should be except for unusual circumstances), the operating system will choose the most *appropriate* protocol. It will choose `TCP for stream sockets`and `UDP for datagram sockets`.
+
+The socket system call returns an entry into the file descriptor table (i.e. a small integer). This value is used for all subsequent references to this socket.
 
 
-
-
+To allow the server to handle multiple simultaneous connections, we make the following changes the code:
+    1. Put the `accept` statement and the following code in an infinite loop.
+    2. After a connection established, call `fork()` to create a new process.
+    3. The child process will close `sockfd` and call `dostuff() (a psuedo function that contains all stuff)`, passing the new socket file descriptor as an argument. When the two processes have completed their conversation, as indicated by `dostuff()` returning, this process simply exits.
+    4. The parent process closes `newsockfd`. Because all of this code is in an infinite loop, it will return to the accept statement to wait for the next connection.
 
 
 
