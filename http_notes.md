@@ -56,20 +56,20 @@ HTTP/1.0 404 Not Found
 
 #### The first digit of status codes identifies the general category of response:
 
-*1xx* indicates an informational message only
-*2xx* indicates success of some kind
-*3xx* redirects the client to another URL
-*4xx* indicates an error on the client's part
-*5xx* indicates an error on the server's part
+1. *1xx* indicates an informational message only
+2. *2xx* indicates success of some kind
+3. *3xx* redirects the client to another URL
+4. *4xx* indicates an error on the client's part
+5. *5xx* indicates an error on the server's part
 
 #### The most common status codes are:
 
-*200 OK* The request succeeded, and the resulting resources is returned in the message body.
-*404 Not Found* The requested resource does not exist.
-*301 Moved Permanently*
-*302 Moved Permanently*
-*303 See Other(HTTP 1.1 only)*
-*500 Server Error* An unexpedted server error. The most common cause ise a server-side script that has bad syntax, fails or otherwise can't run correctly.
+1. *200 OK* The request succeeded, and the resulting resources is returned in the message body.
+2. *404 Not Found* The requested resource does not exist.
+3. *301 Moved Permanently*
+4. *302 Moved Permanently*
+5. *303 See Other(HTTP 1.1 only)*
+6. *500 Server Error* An unexpedted server error. The most common cause ise a server-side script that has bad syntax, fails or otherwise can't run correctly.
 
 ### Header Lines 
 
@@ -93,6 +93,7 @@ An HTTP message may have a body of data sent after the header lines. In a respon
 *If an HTTP message includes a body, there are usually header lines in the message that describe the body.*
 
 The *Content-Type:* header gives the MIME-type of the data in the body, such as text/html or image/gif.
+
 The *Content-Length*: header gives the number of bytes in the body.
 
 ### Sample HTTP Exchange
