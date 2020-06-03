@@ -175,6 +175,74 @@ When a client uses a proxy, it typically sends all requests to that proxy instea
 
 That way, the proxy knows which server to forward the request to (through the proxy itself may use another proxy).
 
+## HTTP 1.1
+
+To comply with HTTP 1.1, clients must:
+
+1. include `Host:` header with each request
+2. accept responses with chunked data
+3. either support persistent connections, or include the `Connection: close` header with each request
+4. handle the `100 Continue` response
+
+### Host: Header
+
+Several domains living on the same server is like several people sharing one phone. Thus, every HTTP request must specify which host name.
+
+```
+    GET /path/file.html HTTP/1.1
+    Host: www.host1.com
+    [blank line here]
+```
+
+### Chunked Transfer-Encoding
+
+If a server wants to start sending a response before knowing its total length(like with long script output), it might use the simple checked *transfer-encoding*, which breaks the complete response into smaller chunks and sends them in series. You can identify such a response because it contains the *Transfer-Encoding: chunked* header.
+
+A chunked message body contains a series of chunks, followed by a line with "0"(zero), followed by optional footers(just like heders), and a blank line. Each chunk consists of two parts:
+
+1. a line with size of the chunk data, in hex, possibly followed by a semicolon and extra parameters you can ignore and ending with CRLF.
+2. the data itself, followed by CRLF
+
+```
+    HTTP/1.1 200 OK
+    Date: Fri, 31 Dec 199 22:00:00 GMT
+    Content-Type: text/plain
+    Transfer-Encoding: chunked
+
+    1a: ignore-stuff-here
+    abcdefghijklmnopqrstuvwxyz
+    10
+    1234567890abcdef
+    0
+    some-footer: some-value
+    another-footer: another-value
+    [blank line here]
+```
+
+The chunks can contain any binary data, and may be much larger than the examples here. The size-line parameters are rarely used, but you should at least ignore then correctly. Footers are also rare, but might be appropriate for things like checksums or digital signatures.
+
+For comprasion here is the equivalent to the above response, without using chunked encoding:
+
+```
+    HTTP/1.1 200 OK
+    Date: Fri, 31 Dec 1999 23:59:59 GMT
+    Content-Type: text/plain
+    Content-Length: 42
+    some-footer: some-value
+    another-footer: another-value
+
+    abcdefghijklmnopqrstuvwxyz1234567890abcdef
+```
+
+
+
+
+
+
+
+
+
+
 
 
 
