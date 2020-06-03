@@ -27,14 +27,14 @@ HTTP uses client-server model. An `HTTP client` opens a connection and sends a r
 3. a blank line (i.e. CRLF by itself) and
 4. an optional message body (e.g. a file, or query data or query output)
 
-`
+```
     <initial line, different for request vs. response>
     Header1: value1
     Header2: value2
     Header3: value3
 
     <optinal message body, like file contents or query data, it can be many lines long, or even binary data>
-`
+```
 
 Initial lines and headers should end in CRLF.
 
@@ -79,12 +79,12 @@ The header lines are in the usual text header format, which is: one line per hea
 
 The following two headers are equivalent:
 
-`
+```
     Header1: some-long-value-1a, some-long-value-1b
 
     HEADER1:    some-long-value-1a, 
                 some-long-value-1b
-`
+```
 
 ### The Message Body
 
@@ -103,16 +103,16 @@ To retrive the file at the URL
 
 first open a socket to the host www.somehost.com, port 80 ( use the default port of 80 because none is specified in the URL). Then, send something like the following through the socket:
 
-`
+```
     GET /path/file.html HTTP/1.0
     From: someuser@somedomain.com
     User-Agent: HTTPTool/1.0
     [blank line here]
-`
+```
 
 The server should respond with something like the following, sent back through the same socket:
 
-`
+```
     HTTP/1.0 OK
     Date: Fri, 29 May 2020 22:00:00 GMT
     Content-Type: text/html
@@ -127,7 +127,7 @@ The server should respond with something like the following, sent back through t
     .
     </body>
     </html>
-`
+```
 
 After sending the response, the server closes the socket.
 
@@ -150,7 +150,7 @@ The most common use of POST, by fdar is to submit HTML form data. In this case t
 
 Here is a typical form submission, using POST:
 
-`
+```
     POST /path/script.php HTTP/1.0
     From: frog@domain.com
     User-Agent: HTTPTool/1.0
@@ -158,7 +158,7 @@ Here is a typical form submission, using POST:
     Content-Length: 32
 
     home=Cosby&favorite+flavor=flies
-`
+```
 
 ### HTTP Proxies
 
@@ -168,9 +168,9 @@ Proxies are commonly used in firewalls, for LAN-wide caches or in other situatio
 
 When a client uses a proxy, it typically sends all requests to that proxy instead of to the servers in the URLs. Requests to a proxy differ from normal requests in one way: in the first line they use the complete URL of the resource being requested, instead of just path. For example,
 
-`
+```
     GET http://www.somehost.com/path/file.html HTTP/1.0
-`
+```
 
 That way, the proxy knows which server to forward the request to (through the proxy itself may use another proxy).
 
