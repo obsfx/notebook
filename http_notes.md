@@ -136,7 +136,7 @@ After sending the response, the server closes the socket.
 
 #### HEAD Method
 
-Just like a GET request but it only recieves the response header not the resource.
+Just like a GET request but it only receives the response header not the resource.
 
 The reponse to a HEAD request must never contain a message body, just the status line and headers.
 
@@ -175,7 +175,7 @@ When a client uses a proxy, it typically sends all requests to that proxy instea
 
 That way, the proxy knows which server to forward the request to (through the proxy itself may use another proxy).
 
-## HTTP 1.1
+## HTTP 1.1 Clients
 
 To comply with HTTP 1.1, clients must:
 
@@ -234,6 +234,37 @@ For comprasion here is the equivalent to the above response, without using chunk
     abcdefghijklmnopqrstuvwxyz1234567890abcdef
 ```
 
+### Persistent Connections and the "Connection: close" Header
+
+In HTTP 1.0 and before TCP connections are closed after each request and response, so each resource to be retrived requires its own connection. But it was changed because of performance so now several requests and responses can be sent through a single persistent connection.
+
+*Persistent connections are the default in HTTP 1.1*, so nothing special is required to use them. Just open a connection an send several requests in series(called pipelining), and read the responses in the same order as the requests were sent.
+
+If a client includes *Connection: close* header in the request, then the connection will be closed after the corresponding response.
+
+### The "100 Continue" Response
+
+This means the server has received the first part request, and can be used to aid communication over slow links.
+
+## URL-encoding
+
+HTML form data is usually URL-encoded to package it in a GET or POST submission. In a nutshell, here is how you URL-encode the name-value pairs of the form data:
+
+1. Convert all "unsafe" characters in the names and values to "%xx" where "xx" is the ascii value of the character, in hex. "Unsafe" characters include `=, &, %, +`, non-printable characters and any others you want to encode.
+2. Change all spaces to plusses.
+3. String the names and values together with `=` abd `&` like
+```
+    name1=value1&name2=value2&name3=value3
+```
+4. This string is your message `body for POST submission` or the `query string for GET submissions`.
+
+For example, if a form has a field called "name" that is set to "Lucy" and a field called "neighbors" that is set to "Fred & Ethel" the URL-encoded form data would be
+
+```
+    name=Lucy&neighbors=Fred+%26+Ethel
+```
+
+with a length of 34.
 
 
 
