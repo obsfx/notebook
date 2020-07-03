@@ -15,11 +15,15 @@ together to get 100?” The answer is 2: 10 × 10. So log 10 100 = 2. Logs are t
 The run time in Big O notation is O(n). Where are the seconds? There are none—Big O doesn’t tell you the speed in seconds. Big O notation lets you compare the number of operations. It tells you how fast the algorithm grows.
 
 • O(log n), also known as log time. Example: Binary search.
+
 • O(n), also known as linear time. Example: Simple search.
+
 • O(n * log n). Example: A fast sorting algorithm, like quicksort
 (coming up in chapter 4).
+
 • O(n 2 ). Example: A slow sorting algorithm, like selection sort
 (coming up in chapter 2).
+
 • O(n!). Example: A really slow algorithm, like the traveling
 salesperson (coming up next!).
 
@@ -47,10 +51,14 @@ list that has 1 / 2 × n elements. The runtime is O(n × 1 / 2 × n). But consta
 ##### Recursion Recap
 
 • Recursion is when a function calls itself.
+
 • Every recursive function has two cases: the base case
 and the recursive case.
+
 • A stack has two operations: push and pop.
+
 • All function calls go onto the call stack.
+
 • The call stack can get very large, which takes up a lot of memory.
 
 
@@ -59,13 +67,16 @@ and the recursive case.
 
 The hash function tells you exactly where the price is stored, so you
 don’t have to search at all! This works because
+
 • The hash function consistently maps a name to the same index. Every
 time you put in “avocado”, you’ll get the same number back. So you
 can use it the first time to find where to store the price of an avocado,
 and then you can use it to find where you stored that price.
+
 • The hash function maps different strings to different indexes.
 “Avocado” maps to index 4. “Milk” maps to index 0. Everything maps
 to a different slot in the array where you can store its price.
+
 • The hash function knows how big your array is and only returns valid
 indexes. So if your array is 5 items, the hash function doesn’t return
 100 ... that wouldn’t be a valid index in the array.
@@ -77,11 +88,15 @@ indexes. So if your array is 5 items, the hash function doesn’t return
 ##### Dijkstra’s algorithm [Page 120]
 
 To recap, Dijkstra’s algorithm has four steps:
+
 1. Find the cheapest node. This is the node you can get to in the least
 amount of time.
+
 2. Check whether there’s a cheaper path to the neighbors of this node.
 If so, update their costs.
+
 3. Repeat until you’ve done this for every node in the graph.
+
 4. Calculate the final path. (Coming up in the next section!)
 
 To calculate the shortest path in an unweighted graph, use *breadth-first*
