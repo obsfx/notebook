@@ -1,3 +1,5 @@
+## Grokking Algorithms Notes
+
 ##### Logarithms [Page 7]
 
 You may not remember what logarithms are, but you probably know what

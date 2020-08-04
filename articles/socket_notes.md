@@ -1,3 +1,5 @@
+# Summary of Socket Notes
+
 `refereance page: https://www.cs.rpi.edu/~moorthy/Courses/os98/Pgms/socket.html`
 
 *Client* needs to know of the existence of and the adress of the *server*, but the *server* does not need to know the address of (or even existence of) the *client* before to the connection being established.
