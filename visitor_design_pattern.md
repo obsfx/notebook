@@ -18,11 +18,11 @@ the return type can be different for each individual Visitor implementation, Thi
 interface has generic return type.
 
 ```typescript
-    interface Visitor<R> {
-        visitA(obj: A): R;
-        visitB(obj: B): R;
-        visitC(obj: C): R;
-    }
+interface Visitor<R> {
+    visitA(obj: A): R;
+    visitB(obj: B): R;
+    visitC(obj: C): R;
+}
 ```
 
 Every object that we will perform operation with the Visitor will be derrived from the
@@ -30,35 +30,32 @@ our 'Alphabet' abstract class and override their own accept method that calls re
 visitor method from the passed Visitor implementation.
 
 ```typescript
-    abstract class Alphabet {
-        abstract accept<R>(visitor: Visitor<R>): R;
-    }
+abstract class Alphabet {
+    abstract accept<R>(visitor: Visitor<R>): R;
+}
 ```
 
 Only thing we should do in objects is just overriding accept method with the 
 new version of it that calls the operation we want to perform.
 
 ```typescript
-    class A extends Alphabet {
-	constructor(...args) {
-		super();
-		...
-	}
-
-	accept<R>(visitor: Visitor<R>): R {
-		return visitor.visitA(this);
-	}
-    }
-		
-    class B extends Alphabet {
-        ...
-
-	accept<R>(visitor: Visitor<R>): R {
+class A extends Alphabet {
+    constructor(...args) {
+        super();
 	    ...
-	}
-     }
+    }
 
-    .
-    .
-    .
+    accept<R>(visitor: Visitor<R>): R {
+        return visitor.visitA(this);
+    }
+}
+		
+class B extends Alphabet {
+    ...
+
+    accept<R>(visitor: Visitor<R>): R {
+        ...
+    }
+}
+...
 ```
