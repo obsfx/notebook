@@ -1,5 +1,3 @@
-## Git Cheatsheet 🐙
-
 ###### Username configuration
 
 `git config --global user.name "username"`

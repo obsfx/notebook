@@ -1,4 +1,3 @@
-# Visitor Design Pattern
 Refs:
 
 [Crafting Interpreters: Representing Code](https://craftinginterpreters.com/representing-code.html#the-visitor-pattern)

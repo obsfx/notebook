@@ -1,5 +1,3 @@
-# Summary of HTTP(Hypertext Transfer Protocol) Notes
-
 `referance page: https://www.jmarshall.com/easy/http/`
 
 ### What is HTTP ?
