@@ -1,4 +1,9 @@
 # Visitor Design Pattern
+Refs:
+
+[Crafting Interpreters: Representing Code](https://craftinginterpreters.com/representing-code.html#the-visitor-pattern)
+
+[Wikipedia - Visitor Pattern](https://en.wikipedia.org/wiki/Visitor_pattern)
 
 In object oriented programming, visitor design pattern provides a way of seperating 
 the operation logic from the class structure. If we hove to add new operation logics
