@@ -7,15 +7,15 @@ Refs:
 [Wikipedia - Visitor Pattern](https://en.wikipedia.org/wiki/Visitor_pattern)
 
 In object oriented programming, visitor design pattern provides a way of seperating 
-the operation logic from the class structure. If we hove to add new operation logics
+the operation logic from the class structure. If we have to add new operation logics
 very often, with visitor pattern we can do that without touching the exist class 
 structure. And also, with this way we are not mixing unrelated code with the class
 structure.
 
 #### Implementation Example in TypeScript
 
-We need an interface that will be implemented by every new Visitor implemented. Since 
-the return type can be different for each individual Visitor implementation, This 
+We need an interface that will be implemented by every new Visitor implementation. Since 
+the return type can be different for each individual Visitor implementation, this 
 interface has generic return type.
 
 ```typescript
