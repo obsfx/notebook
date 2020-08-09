@@ -145,3 +145,11 @@ strcpy(ptr2,ptr1);
 So if you want the string which you have copied to be used in another function (as it is created in heap section) you can use strdup, else strcpy is enough.
 
 (With **strcpy** we must create a pointer manually to copy the string to in it, but with **strdup** we dont have to do that because it does this job for us.)
+
+
+
+### string interning
+
+https://stackoverflow.com/questions/10578984/what-is-java-string-interning
+
+Basically doing String.intern() on a series of strings will ensure that all strings having same contents share same memory. So if you have list of names where 'john' appears 1000 times, by interning you ensure only one 'john' is actually allocated memory.
