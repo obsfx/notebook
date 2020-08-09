@@ -13,6 +13,14 @@ In [computing](https://en.wikipedia.org/wiki/Computing), a **word** is the natur
 
 
 
+ref: [https://en.wikipedia.org/wiki/Data_structure_alignment#Problems](https://en.wikipedia.org/wiki/Data_structure_alignment#Problems)
+
+> The CPU accesses memory by a single memory word at a time. As long as the memory word size is at least as large as the largest [primitive data type](https://en.wikipedia.org/wiki/Primitive_data_type) supported by the computer, aligned accesses will always access a single memory word. This may not be true for misaligned data accesses.
+>
+> If the highest and lowest bytes in a datum are not within the same memory word the computer must split the datum access into multiple memory accesses. This requires a lot of complex circuitry to generate the memory accesses and coordinate them. To handle the case where the memory words are in different memory pages the processor must either verify that both pages are present before executing the instruction or be able to handle a [TLB](https://en.wikipedia.org/wiki/Translation_lookaside_buffer) miss or a [page fault](https://en.wikipedia.org/wiki/Page_fault) on any memory access during the instruction execution.
+
+
+
 ref: [https://carld.github.io/2017/06/20/lisp-in-less-than-200-lines-of-c.html](https://carld.github.io/2017/06/20/lisp-in-less-than-200-lines-of-c.html)
 
 ```c
