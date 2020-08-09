@@ -82,3 +82,16 @@ struct {
 +-------+-------+-------+-------+
 ```
 
+
+
+ref: [https://stackoverflow.com/a/119491](https://stackoverflow.com/a/119491)
+
+If you want the structure to have a certain size with GCC for example use [`__attribute__((packed))`](http://digitalvampire.org/blog/index.php/2006/07/31/why-you-shouldnt-use-__attribute__packed/).
+
+On Windows you can set the alignment to one byte when using the cl.exe compier with the [/Zp option](http://msdn.microsoft.com/en-us/library/xh3e3fd0(VS.80).aspx).
+
+Usually it is easier for the CPU to access data that is a multiple of 4 (or 8), depending platform and also on the compiler.
+
+So it is a matter of alignment basically.
+
+**You need to have good reasons to change it.**
