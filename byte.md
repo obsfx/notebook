@@ -9,6 +9,10 @@
 8 byte -> 64bit -> 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
 ```
 
+In [computing](https://en.wikipedia.org/wiki/Computing), a **word** is the natural unit of data used by a particular [processor](https://en.wikipedia.org/wiki/Central_processing_unit) design. A word is a fixed-sized [piece of data](https://en.wikipedia.org/wiki/Data_(computing)) handled as a unit by the [instruction set](https://en.wikipedia.org/wiki/Instruction_set) or the hardware of the processor. The number of [bits](https://en.wikipedia.org/wiki/Bit) in a word (the *word size*, *word width*, or *word length*) is an important characteristic of any specific processor design or [computer architecture](https://en.wikipedia.org/wiki/Computer_architecture).
+
+
+
 ref: [https://carld.github.io/2017/06/20/lisp-in-less-than-200-lines-of-c.html](https://carld.github.io/2017/06/20/lisp-in-less-than-200-lines-of-c.html)
 
 ```c
