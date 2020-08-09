@@ -24,3 +24,61 @@ For example, given a pointer to the address **0x100200230**, if it’s a pair we
 Well, partly as a performance optimization, many computers and their Operating Systems, allocate memory on set boundaries .It’s referred to as memory alignment, and if for example the alignment is to an 8-byte (64 bit) boundary, it means that when memory is allocated it’s address will be a multiple of 8.
 
 For example the next 8 byte boundary for the address **0x100200230** is **0x100200238**. Memory could be aligned to 16-bits (2 bytes), 32-bits (4 bytes) as well. Typically it will be aligned on machine word, which means 32-bits if you have a 32-bit CPU and bus.
+
+
+
+ref: [ https://stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member/119134#119134](https://stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member/119134#119134)
+
+> It's for alignment. Many processors can't access 2- and 4-byte quantities (e.g. ints and long ints) if they're crammed in every-which-way.
+>
+> Suppose you have this structure:
+
+```c
+struct {
+    char a[3];
+    short int b;
+    long int c;
+    char d[3];
+};
+```
+
+> Now, you might think that it ought to be possible to pack this structure into memory like this:
+
+```
++-------+-------+-------+-------+
+|           a           |   b   |
++-------+-------+-------+-------+
+|   b   |           c           |
++-------+-------+-------+-------+
+|   c   |           d           |
++-------+-------+-------+-------+
+```
+
+> But it's much, much easier on the processor if the compiler arranges it like this:
+
+```
++-------+-------+-------+
+|           a           |
++-------+-------+-------+
+|       b       |
++-------+-------+-------+-------+
+|               c               |
++-------+-------+-------+-------+
+|           d           |
++-------+-------+-------+
+```
+
+> In the packed version, notice how it's at least a little bit hard for you and me to see how the b and c fields wrap around? In a nutshell, it's hard for the processor, too. Therefore, most compilers will pad the structure (as if with extra, invisible fields) like this:
+
+```
++-------+-------+-------+-------+
+|           a           | pad1  |
++-------+-------+-------+-------+
+|       b       |     pad2      |
++-------+-------+-------+-------+
+|               c               |
++-------+-------+-------+-------+
+|           d           | pad3  |
++-------+-------+-------+-------+
+```
+
