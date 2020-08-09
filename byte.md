@@ -122,3 +122,26 @@ Usually it is easier for the CPU to access data that is a multiple of 4 (or 8), 
 So it is a matter of alignment basically.
 
 **You need to have good reasons to change it.**
+
+
+
+### strcpy vs strdup
+
+https://stackoverflow.com/questions/14020380/strcpy-vs-strdup
+
+```
+strcpy(ptr2, ptr1)` is equivalent to `while(*ptr2++ = *ptr1++)
+```
+
+where as strdup is equivalent to
+
+```c
+ptr2 = malloc(strlen(ptr1)+1);
+strcpy(ptr2,ptr1);
+```
+
+([memcpy version](https://stackoverflow.com/a/38033333/2436175) might be more efficient)
+
+So if you want the string which you have copied to be used in another function (as it is created in heap section) you can use strdup, else strcpy is enough.
+
+(With **strcpy** we must create a pointer manually to copy the string to in it, but with **strdup** we dont have to do that because it does this job for us.)
