@@ -42,6 +42,18 @@ For example the next 8 byte boundary for the address **0x100200230** is **0x1002
 
 
 
+Effectively for us it means that whenever we call `calloc` we’ll always get back an address where the lowest bit is off (0), so we can set it on if we want. (We always get a **even** number since the address is the **multiply of 4 or 8 which depends on the CPU**. So this guarantees that lower-bit of our address **always be off(0)**)
+
+```
+0x100200230 -> 100000000001000000000001000110000
+0x100200238 -> 100000000001000000000001000111000
+0x100200242 -> 100000000001000000000001001000010
+.
+.
+```
+
+
+
 ref: [ https://stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member/119134#119134](https://stackoverflow.com/questions/119123/why-isnt-sizeof-for-a-struct-equal-to-the-sum-of-sizeof-of-each-member/119134#119134)
 
 > It's for alignment. Many processors can't access 2- and 4-byte quantities (e.g. ints and long ints) if they're crammed in every-which-way.
