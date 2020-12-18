@@ -26,7 +26,7 @@ do
   # https://stackoverflow.com/a/2871187
   filenamewoex="${filenamestrarr[0]//[_-]/ }"
 
-  rdme+="[$filenamewoex]($dm/posts/${filename})"
+  rdme+="[$filenamewoex]($dm/posts/${filenamestrarr[0]}.html)"
   rdme+="\n\n"
 done
 
