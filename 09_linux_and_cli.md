@@ -6,6 +6,5 @@
 + `CTRL + Y` - paste everything you yanked
 + `CTRL + L` - clear the screen
 + `CTRL + R` - reverse search through history
-
-
+-------
 + `kill -l` list available signals for `kill`
