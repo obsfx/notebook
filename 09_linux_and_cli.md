@@ -8,3 +8,4 @@
 + `CTRL + R` - reverse search through history
 -------
 + `kill -l` list available signals for `kill`
++ Permission: `drwxrwxr-x` --> d  - rwx(user) - rwx(group) - r-x(everyone else)
